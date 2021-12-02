@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Slider from 'react-slick';
 
 import styled from '../../style';
-import { filePath } from '../../modules/util';
+import { bannerApi } from '../../modules/api';
 
 import BannerCp from './BannerCp';
 
@@ -16,25 +15,7 @@ const Wrapper = styled.section`
 const BannerWrapperCp = () => {
   const [banner, setBanner] = useState([]);
   useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_BANNER_URL)
-      .then(({ data }) => {
-        const { content: contents, BoardFiles } = data.list;
-        setBanner(
-          contents.split('^^').map((v, i) => {
-            let [title, price, content, link, pos] = v.split('|');
-            return {
-              title,
-              price,
-              content,
-              link,
-              pos,
-              file: filePath(BoardFiles[i].saveName),
-            };
-          })
-        );
-      })
-      .catch((err) => console.log(err));
+    (async () => setBanner(await bannerApi(241)))();
   }, []);
 
   const settings = {

@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-import { filePath } from '../../modules/util';
+import { filePath } from './util';
 
 export const bannerApi = async (id) => {
   try {
-    const { data } = await axios.get(process.env.REACT_APP_BANNER_URL + '?id=' + id);
+    const { data } = await axios.get(
+      process.env.REACT_APP_BANNER_URL + '?id=' + id
+    );
     const { content: contents, BoardFiles } = data.list;
     const rs = contents.split('^^').map((v, i) => {
       let [title, price, content, link, pos] = v.split('|');
@@ -22,10 +24,3 @@ export const bannerApi = async (id) => {
     console.log(err);
   }
 };
-
-axios
-  .get(process.env.REACT_APP_BANNER_URL + '?id=241')
-  .then(({ data }) => {
-    const { content: contents, BoardFiles } = data.list;
-  })
-  .catch((err) => console.log(err));
