@@ -1,10 +1,6 @@
 import React from 'react';
 
-import styled, {
-  Container,
-  SmallContainer,
-  AnimationWrapper,
-} from '../../style';
+import styled, { Container, SmallContainer, AnimationWrapper } from '../../style';
 import ImageCp from '../common/ImageCp';
 import SubAllNaviCp from './SubNaviCp';
 
@@ -46,11 +42,7 @@ const SubAllCp = ({ data }) => {
             ))}
           </SubWrap>
           <div>
-            <ImageCp
-              maxWidth={true}
-              src="/img/shop-banner1.jpg"
-              className="mb-3"
-            />
+            <ImageCp maxWidth={true} src="/img/shop-banner1.jpg" className="mb-3" />
             <ImageCp maxWidth={true} src="/img/shop-banner2.jpg" />
           </div>
         </Wrap>
