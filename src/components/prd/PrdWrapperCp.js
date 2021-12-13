@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled, { media } from '../../style';
 
-import { prdApi } from '../../modules/api';
+import withPrdWrapper from './withPrdWrapper';
 import PrdCp from './PrdCp';
 
-const Wrapper = styled.ul`
+const Wrapper = styled.div`
+  width: 100%;
+  overflow: hidden;
   margin-top: 1em;
+`;
+
+const Wrap = styled.div`
   display: flex;
   flex-wrap: wrap;
-  overflow-x: hidden;
+  overflow: hidden;
   width: 101%;
   @media ${media.md} {
     width: 101.5%;
@@ -21,18 +26,17 @@ const Wrapper = styled.ul`
   }
 `;
 
-const PrdWrapperCp = () => {
-  const [prd, setPrd] = useState([]);
-  useEffect(() => {
-    (async () => setPrd(await prdApi({ cid: 'j1_20' })))();
-  }, []);
+const PrdWrapperCp = (props) => {
+  console.log(props);
   return (
     <Wrapper>
-      {prd.map((v, i) => (
-        <PrdCp {...v} key={i} />
-      ))}
+      <Wrap>
+        {props.prd.map((v, i) => (
+          <PrdCp {...v} key={i} isList={true} />
+        ))}
+      </Wrap>
     </Wrapper>
   );
 };
 
-export default React.memo(PrdWrapperCp);
+export default withPrdWrapper(React.memo(PrdWrapperCp));

@@ -12,11 +12,11 @@ const Wrapper = styled.section`
   padding-bottom: 3em;
 `;
 
-const BannerWrapperCp = () => {
+const BannerWrapperCp = ({ id }) => {
   const [banner, setBanner] = useState([]);
   useEffect(() => {
-    (async () => setBanner(await bannerApi(241)))();
-  }, []);
+    (async () => setBanner(await bannerApi(id)))();
+  }, [id]);
 
   const settings = {
     dots: true,
@@ -25,6 +25,7 @@ const BannerWrapperCp = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    dotsClass: 'slick-dots-banner',
   };
   return (
     <Wrapper>
