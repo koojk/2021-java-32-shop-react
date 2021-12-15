@@ -26,7 +26,11 @@ const Main = () => {
         <BannerWrapperCp id="241" />
         <NoticeWrapperCp />
         <ParallaxCp id="242" />
-        <PrdWrapperCp title="New Products" button={true} buttonName="SHOW MORE" />
+        <PrdWrapperCp
+          title="New Products"
+          button={true}
+          buttonName="SHOW MORE"
+        />
         <CenterParallaxCp id="243" />
         <SurfWrapperCp />
       </Container>
@@ -34,8 +38,8 @@ const Main = () => {
       <Container>
         <InstaWrapperCp model="insta" id="245" />
         <FeaturedPrdWrapperCp title="Featured Products" />
-        <BrandCp boardId="3" />
       </Container>
+      <BrandCp boardId="3" />
       <FooterWrapperCp />
     </Wrapper>
   );
